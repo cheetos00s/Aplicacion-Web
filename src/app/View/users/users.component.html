@@ -1,0 +1,28 @@
+<br>
+<br>
+<br>
+<h1>Search friends</h1>
+<form class="d-flex mt-3" role="search">
+  <input class="form-control" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText">
+  <button class="btn btn-success" type="submit">Search</button>
+</form>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Website</th>
+        <th scope="col">View profile</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let products of productsList | search: searchText">
+        <th scope="row">{{products.id}}</th>
+        <td>{{products.name}}</td>
+        <td>{{products.email}}</td>
+        <td>{{products.website}}</td>
+        <button type="button" class="btn btn-primary" [routerLink]="['/products', products.id]">Profile</button>
+      </tr>
+    </tbody>
+  </table>
